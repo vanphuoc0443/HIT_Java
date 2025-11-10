@@ -1,9 +1,11 @@
 package productapp.controller;
 
 
+import productapp.common.Constants;
 import productapp.model.*;
 import productapp.service.ProductService;
-import productapp.util.InputUtils;
+import productapp.util.*;
+
 
 
 import java.util.List;
@@ -61,12 +63,16 @@ public class ProductController {
             boolean has5G = InputUtils.readBoolean("Có hỗ trợ 5G không?");
             product = new SmartPhone(name, desc, price, has5G);
         } else {
-            System.out.println("Loại sản phẩm không hợp lệ!");
+            System.out.println(Constants.INVALID_TYPE);
             return;
         }
 
-        service.save(product);
-        System.out.println("Đã thêm sản phẩm: " + product.getInfo());
+        if (ValidationUtils.isValidProduct(product)) {
+            service.save(product);
+            System.out.println(Constants.ADD_SUCCESS);
+        } else {
+            System.out.println(Constants.ADD_FAILED);
+        }
     }
 
     private void handleList() {
@@ -82,17 +88,17 @@ public class ProductController {
     }
 
     private void handleFind() {
-        String id = InputUtils.readString("Nhập id sản phẩm cần tìm: ");
+        String id = InputUtils.readString("Nhập UUID sản phẩm cần tìm: ");
         Product found = service.getById(id);
         if (found != null) {
             System.out.println("Tìm thấy: " + found.getInfo());
         } else {
-            System.out.println("Không tìm thấy sản phẩm vớiid này!");
+            System.out.println("Không tìm thấy sản phẩm với ID này!");
         }
     }
 
     private void handleRemove() {
-        String id = InputUtils.readString("Nhập id sản phẩm cần xóa: ");
+        String id = InputUtils.readString("Nhập UUID sản phẩm cần xóa: ");
         boolean removed = service.removeById(id);
         System.out.println(removed ? "Đã xóa sản phẩm thành công!" : "Không tìm thấy sản phẩm để xóa!");
     }
