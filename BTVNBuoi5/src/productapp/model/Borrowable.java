@@ -1,0 +1,6 @@
+package productapp.model;
+
+public interface Borrowable {
+    boolean borrow(int quantity);
+    int getAvailableQuantity();
+}
