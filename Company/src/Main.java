@@ -45,6 +45,6 @@ public static void menu(){
     System.out.println("----- Menu -----");
     System.out.println("1. In ra danh sách tất cả các nhân viên");
     System.out.println("2. In ra thông tin nhiên viên theo ID");
-    System.out.println("3. Lọc ra danh sách nhân viên theo Tên \n");
+    System.out.println("3. Lọc ra danh sách nhân viên theo Tên");
     System.out.println("4. Thoát");
 }

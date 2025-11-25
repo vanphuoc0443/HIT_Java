@@ -20,7 +20,7 @@ public class IEmployeeServiceImpl implements IEmployeeService {
         Developer employee1 = new Developer("Phuoc", 26, 5000, device1, 10);
         Tester employee2 = new Tester("Dung", 35, 5000, device2, 5);
         Developer employee3 = new Developer("Nam", 25, 5000, device1, 6);
-        Developer employee4 = new Developer("Quang", 23, 5000, device1, 15);
+        Developer employee4 = new Developer("Nam", 23, 5000, device1, 15);
         Tester employee5 = new Tester("Tai", 27, 5000, device1, 17);
         employees = Arrays.asList(employee1, employee2, employee3, employee4, employee5);
         return  employees;
